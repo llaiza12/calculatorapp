@@ -42,10 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
   String userDisplayText = "0";
 
   int extractResultFromString(String expression) {
-    final parsedExpression = Expression.parse(expression);
-    final evaluator = const ExpressionEvaluator();
-    final result = evaluator.eval(parsedExpression, {});
-    return result.toInt();
+    try {
+      final parsedExpression = Expression.parse(expression);
+      final evaluator = const ExpressionEvaluator();
+      final result = evaluator.eval(parsedExpression, {});
+      return result.toInt();
+    } catch (e) {
+      return 0;
+    }
   }
 
   void solve() {
