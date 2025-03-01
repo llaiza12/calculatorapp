@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:expressions/expressions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String userDisplayText = "0"; // Stores the displayed value
+  String userDisplayText = "0";
+
+  int extractResultFromString(String expression) {
+    final parsedExpression = Expression.parse(expression);
+    final evaluator = const ExpressionEvaluator();
+    final result = evaluator.eval(parsedExpression, {});
+    return result.toInt();
+  }
+
+  void solve() {
+    setState(() {
+      final result = extractResultFromString(userDisplayText);
+      userDisplayText = result.toString();
+    });
+  }
 
   void onButtonPressed(String userInput) {
     setState(() {
@@ -99,11 +114,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Text("0"),
                 ),
                 ElevatedButton(
-                  onPressed: () => onButtonPressed("÷"),
+                  onPressed: () => onButtonPressed("/"),
                   child: const Text("÷"),
                 ),
                 ElevatedButton(
-                  onPressed: () => onButtonPressed("x"),
+                  onPressed: () => onButtonPressed("*"),
                   child: const Text("x"),
                 ),
               ],
@@ -172,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: const Text("3"),
                 ),
                 ElevatedButton(
-                  onPressed: () => onButtonPressed("="),
+                  onPressed: solve,
                   child: const Text("="),
                 ),
               ],
