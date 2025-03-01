@@ -38,6 +38,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String userDisplayText = "0"; // Stores the displayed value
+
+  void onButtonPressed(String userInput) {
+    setState(() {
+      if (userDisplayText == "0") {
+        userDisplayText = userInput;
+      } else {
+        userDisplayText += userInput;
+      }
+    });
+  }
+
+  void clear() {
+    setState(() {
+      userDisplayText = "0";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               alignment: Alignment.centerRight,
               child: Text(
-                "0", // user input
+                userDisplayText,
                 style: TextStyle(
                   background: Paint()..color = Colors.grey,
                   color: Colors.black,
@@ -73,27 +91,19 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    // Clear button
-                  },
+                  onPressed: clear,
                   child: Text("C"),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // +/- button
-                  },
+                  onPressed: () => onButtonPressed("0"),
                   child: const Text("0"),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // operator
-                  },
+                  onPressed: () => onButtonPressed("÷"),
                   child: const Text("÷"),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // operator
-                  },
+                  onPressed: () => onButtonPressed("x"),
                   child: const Text("x"),
                 ),
               ],
@@ -104,19 +114,19 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("7"),
                   child: Text("7"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("8"),
                   child: const Text("8"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("9"),
                   child: const Text("9"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("-"),
                   child: const Text("-"),
                 ),
               ],
@@ -127,19 +137,19 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("4"),
                   child: Text("4"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("5"),
                   child: const Text("5"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("6"),
                   child: const Text("6"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("+"),
                   child: const Text("+"),
                 ),
               ],
@@ -150,19 +160,19 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("1"),
                   child: Text("1"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("2"),
                   child: const Text("2"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("3"),
                   child: const Text("3"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => onButtonPressed("="),
                   child: const Text("="),
                 ),
               ],
