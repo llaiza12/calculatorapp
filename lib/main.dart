@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
+
+        // Elevated Button Theme
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blueGrey,
@@ -39,8 +41,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String userDisplayText = "0";
+  String userDisplayText = "0"; // display text
 
+  // parses expression and returns result
   int extractResultFromString(String expression) {
     try {
       final parsedExpression = Expression.parse(expression);
@@ -48,10 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
       final result = evaluator.eval(parsedExpression, {});
       return result.toInt();
     } catch (e) {
+      // catches errors and returns '0'
       return 0;
     }
   }
 
+  // called when user presses "=" button. solves expression and displays result to user
   void solve() {
     setState(() {
       final result = extractResultFromString(userDisplayText);
@@ -59,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // displays text to user
   void onButtonPressed(String userInput) {
     setState(() {
       if (userDisplayText == "0") {
@@ -69,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // resets calculator
   void clear() {
     setState(() {
       userDisplayText = "0";
@@ -86,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Display Area
             Container(
               padding: EdgeInsets.all(20),
               width: 400,
