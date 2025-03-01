@@ -10,12 +10,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Calculator App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueGrey,
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              )),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Calculator'),
     );
   }
 }
@@ -39,7 +48,126 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              width: 400,
+              height: 90,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              alignment: Alignment.centerRight,
+              child: Text(
+                "0", // user input
+                style: TextStyle(
+                  background: Paint()..color = Colors.grey,
+                  color: Colors.black,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+
+            // First Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Clear button
+                  },
+                  child: Text("C"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // +/- button
+                  },
+                  child: const Text("0"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // operator
+                  },
+                  child: const Text("÷"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // operator
+                  },
+                  child: const Text("x"),
+                ),
+              ],
+            ),
+
+            // Second Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("7"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("8"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("9"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("-"),
+                ),
+              ],
+            ),
+
+            // Third Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("4"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("5"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("6"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("+"),
+                ),
+              ],
+            ),
+
+            // Fourth Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("1"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("2"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("3"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("="),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
